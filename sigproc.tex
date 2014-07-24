@@ -30,6 +30,7 @@
 \usepackage{multirow}
 \usepackage{url}
 \usepackage{paralist}
+\usepackage{statex2}
 
 \begin{document}
 
@@ -152,7 +153,7 @@ The complete set of 51 responses with in addition a summary from the working gro
 
 % \begin{table}[h]
 % \centering
-% \caption{ Computational Giants of Massive Data Analysis ~\cite{b13}}
+% \caption{ Computational Giants of Massive Data Analysis~\cite{b13}}
 % \label{Table5}
 % \begin{tabular}{|c|p{5cm}|} \hline
 % G1 & Basic Statistics \\ \hline
@@ -166,7 +167,7 @@ The complete set of 51 responses with in addition a summary from the working gro
 % \end{tabular}
 % \end{table}
 
-The impressive NRC report ~\cite{b13} is a rich source of information. It has in chapter 2 several examples; most of these are also present in NIST study but NRC does have an interesting discussion of Big Data in Networking and Telecommunication that is omitted from NIST compilation. We will return to the important ``Giants'' in chapter 10 which are related to different facets of our Ogres.
+The impressive NRC report~\cite{b13} is a rich source of information. It has in chapter 2 several examples; most of these are also present in NIST study but NRC does have an interesting discussion of Big Data in Networking and Telecommunication that is omitted from NIST compilation. We will return to the important ``Giants'' in chapter 10 which are related to different facets of our Ogres.
 For the case of distributed applications there are at least two existing attempts to survey and analyze applications. In Jha et\,al.~\cite{b26}, the authors examine at a high-level approximately 20 distinct scientific applications that have either been distributed by design or were distributed ``by nature''.  They reduce the number of applications carefully examined to six representative applications. These applications range from the ubiquitous ``$@$home'' class of distributed applications, to Montage - an image reconstruction application which is now emblematic of loosely coupled workflows, to highly-specialized and performance oriented applications such as NEKTAR. 
 Building upon~\cite{b26}, Jha et\,al.~\cite{b28} seek to understand distributed, dynamic and data-intensive applications (D3 Science) investigating the programming models and abstractions, the run-time and middleware services, and the computational infrastructure. The survey includes the following applications: NGS Analytics, CMB, Fusion, Industrial Incident Notification and Response, MODIS Data Processing, Distributed Network Intrusion Detection, ATLAS/WLCG, LSST, SOA Astronomy, Sensor Network Application, Climate, Interactive Exploration of Environmental Data, and Power Grids. 
 
@@ -179,7 +180,7 @@ many ways
 \begin{compactenum}
 \item \textbf{Benchmark Sets.} These vary from full applications~\cite{b9} to
 kernels or mini-applications such as the NAS Parallel Benchmark~\cite{b20,b25}
-or Parkbench ~\cite{b5} with the Top500~\cite{b16} pacing application Linpack
+or Parkbench~\cite{b5} with the Top500~\cite{b16} pacing application Linpack
 (HPL) particularly well known~\cite{b6}. The new sparse HPCG conjugate gradient
 benchmark is notable~\cite{b6}. Note benchmarks can be specified via explicit
 code and/or specified by a ``pencil and paper specification'' that can be
@@ -244,7 +245,7 @@ Particles/cells/ mesh points & Used in parallel simulations\\
 \end{table}
 
 Tables~\ref{Table1} to~\ref{Table3} summarize characteristics of the 51 use cases, which we will combine with other input for the Ogres. Note that Big Data and parallel programming are intrinsically linked as any Big Data analysis is inevitably processed in parallel. Parallel computing is almost always implemented by dividing the data between processors (data decomposition); the richness here is illustrated in Table~\ref{Table1} which lists the members of space that is decomposed for different use cases; of course these sources of parallelism are broadly applicable outside the 51 use cases they were extracted from. In Table~\ref{Table2}, we identify 15 use case features that will be used later as components of the Ogre facets. The second column of Table~\ref{Table2} lists our estimate of the number of use cases that illustrate this feature; note these are not exclusive so any one use case will illustrate many features.
-It's important to note that machine learning is commonly used but there is an interesting distinction between what are termed Local (LML) and Global machine learning (GML) in Table~\ref{Table2}. In LML, there is parallelism over items of Table~\ref{Table1} and machine learning is applied separately to each item; needed machine learning parallelism is limited and is typified by use of accelerators (GPU). In GML, the machine learning is applied over the full dataset with MapReduce, MPI or equivalent. Typically GML comes from maximum likelihood or 2 with a sum over the data items - documents, sequences, items to be sold, images etc. and often links (point-pairs). Usually GML is a sum of positive numbers as in least squares and is illustrated by algorithms like PageRank, clustering/community detection, mixture models, topic determination, Multidimensional scaling, and (Deep) Learning Networks. Somewhat quixotically, GML can be termed Exascale Global Optimization or EGO. 
+It's important to note that machine learning is commonly used but there is an interesting distinction between what are termed Local (LML) and Global machine learning (GML) in Table~\ref{Table2}. In LML, there is parallelism over items of Table~\ref{Table1} and machine learning is applied separately to each item; needed machine learning parallelism is limited and is typified by use of accelerators (GPU). In GML, the machine learning is applied over the full dataset with MapReduce, MPI or equivalent. Typically GML comes from maximum likelihood or $\chisq$ with a sum over the data items - documents, sequences, items to be sold, images etc. and often links (point-pairs). Usually GML is a sum of positive numbers as in least squares and is illustrated by algorithms like PageRank, clustering/community detection, mixture models, topic determination, Multidimensional scaling, and (Deep) Learning Networks. Somewhat quixotically, GML can be termed Exascale Global Optimization or EGO. 
 
 \begin{table}[t]
 \centering
@@ -333,7 +334,7 @@ using sensor and computationally generated data.
 %DIAGRAM Figure Application Stages
 \begin{figure}
 \centering
-\includegraphics[width=0.5\textwidth]{fig1.png}
+\includegraphics[width=0.5\textwidth]{fig1.pdf}
 \caption{Figure Application Stages}
 \label{figure1}
 \end{figure}
@@ -355,7 +356,7 @@ classes that had overlapping characteristics.
 %TABLE 5
 % \begin{table*}
 % \centering
-% \caption{ Computational Giants of Massive Data Analysis ~\cite{b13}}
+% \caption{ Computational Giants of Massive Data Analysis~\cite{b13}}
 % \label{Table5}
 % \begin{tabular}{|c|p{5cm}|} \hline
 % G1 & Basic Statistics \\ \hline
@@ -373,7 +374,7 @@ Synthesizing lessons learned from HPC, distributed applications and the NIST use
 
 \begin{table}[h]
 \centering
-\caption{ Computational Giants of Massive Data Analysis ~\cite{b13}}
+\caption{ Computational Giants of Massive Data Analysis~\cite{b13}}
 \label{Table5}
 \begin{tabular}{|c|p{5cm}|} \hline
 G1 & Basic Statistics \\ \hline
@@ -389,11 +390,11 @@ G7 & Alignment Problems
 
 Note that a given application can be made up of components with different
 characteristics in Ogre Facet classification. We will reference the 7
-computational giants G1-G7 from the NRC report~\cite{b13} recorded in
-~\ref{Table5}. These are important big data patterns but the Ogres go into more
-detail. The final subsection discusses a selection of kernel Ogres focusing on
-analytics. We intend to follow up with other Ogres ``mini-apps'' or ``kernels''
-covering areas like data intensive workflows.
+computational giants G1-G7 from the NRC report~\cite{b13} recorded
+in~\ref{Table5}. These are important big data patterns but the Ogres go into
+more detail. The final subsection discusses a selection of kernel Ogres
+focusing on analytics. We intend to follow up with other Ogres ``mini-apps'' or
+``kernels'' covering areas like data intensive workflows.
 
 
 \subsection{Problem Architecture Facet of Ogres}
@@ -442,7 +443,19 @@ Core libraries needed: matrix-matrix/vector algebra, conjugate gradient, reducti
 \end{table*}
 
 
-This facet contains application characteristics that are familiar from the simulation domain. Distinctive are the important data abstraction layer that we would recommend highlighting in the software architecture rather than burying as now in particular packages like Hadoop (key-value) and Giraph (graph). Simulations are often setup in well-defined physical spaces but data is often more abstract and the algorithms are typically quite different for metric and non-metric spaces. In contrast to the problem architecture facet, the computational features facet have a direct handle/relevance to performance. Note non-metric space algorithms are often O(N2). As discussed in the NRC report, there is a lot of opportunity to incorporate sophisticated new algorithms to reduce O(N2) to O(N and logs). This is commonly used in search and sort algorithms but not yet in computation in spite of promising initial work~\cite{b13,b23,b19}
+This facet contains application characteristics that are familiar from the
+simulation domain. Distinctive are the important data abstraction layer that we
+would recommend highlighting in the software architecture rather than burying
+as now in particular packages like Hadoop (key-value) and Giraph (graph).
+Simulations are often setup in well-defined physical spaces but data is often
+more abstract and the algorithms are typically quite different for metric and
+non-metric spaces. In contrast to the problem architecture facet, the
+computational features facet have a direct handle/relevance to performance.
+Note non-metric space algorithms are often O(N2). As discussed in the NRC
+report, there is a lot of opportunity to incorporate sophisticated new
+algorithms to reduce O(N2) to O(N and logs). This is commonly used in search
+and sort algorithms but not yet in computation in spite of promising initial
+work~\cite{b13,b23,b19}.
 
 \subsection{Data Source and Data Style Facet of Ogres}
 %TABLE 8
@@ -452,22 +465,28 @@ This facet contains application characteristics that are familiar from the simul
 \label{Table8}
 \begin{tabular}{|p{12cm}|} \hline
 SQL or NoSQL: NoSQL includes Document, Column, Key-value, Graph, Triple store \\ \hline
-Other Enterprise data systems: 10 examples from NIST ~\cite{bb} integrate SQL/NoSQL \\ \hline
+Other Enterprise data systems: 10 examples from NIST~\cite{bb} integrate SQL/NoSQL \\ \hline
 Set of Files: as managed in iRODS and extremely common in scientific research \\ \hline
 File, Object, Block and Data-parallel (HDFS) raw storage: Separated from computing? \\ \hline
-Internet of Things: 24 ~\cite{b22}to 50 (Cisco ~\cite{b11,b12}) billion devices on the Internet by 2020 \\ \hline
-Streaming: Incremental update of datasets with new algorithms to achieve real-time response (G7) \\ \hline
+Internet of Things: 24~\cite{b22}to 50 (Cisco~\cite{b11,b12}) billion devices on the Internet by 2020 \\ \hline
+Streaming: Incremental update and analysis of datasets with new algorithms to achieve real-time response (G7) \\ \hline
 HPC simulations generate major (visualization) output that often needs to mined \\ \hline
 GIS (Geographical Information Systems) provide attractive access to geospatial data \\ \hline
 Before data gets to compute system, there is often an initial data gathering phase which is characterized by a block size and timing. Block size varies from month (Remote Sensing, Seismic) today (genomic) to seconds or lower (Real time control, streaming)\\ \hline
 There are storage/compute system styles: Shared, Dedicated, Permanent, Transient \\ \hline
 Other characteristics are needed for permanent auxiliary/comparison datasets and these could be interdisciplinary, implying nontrivial data movement/replication
-
 \\ \hline
 \end{tabular}
 \end{table*}
 
-The facet of Table~\ref{Table8} covers the acquisition, storage, management and access to the data. The mantra of bringing computing to the data is an important principle especially for the Internet of Things when it is often not practical as backend (clouds) needed to provide adequate computing. It is interesting that the HPC approach of large shared file systems using technologies like Lustre is rather different from commercial systems that use databases or HDFS.  Figure 1 stresses that an important source of data is the output of other programs as data is streamed through a workflow.
+The facet of Table~\ref{Table8} covers the acquisition, storage, management and
+access to the data. The mantra of bringing computing to the data is an
+important principle especially for the Internet of Things when it is often not
+practical as backend (clouds) needed to provide adequate computing. It is
+interesting that the HPC approach of large shared file systems using
+technologies like Lustre is rather different from commercial systems that use
+databases or HDFS. Figure 1 stresses that an important source of data is the
+output of other programs as data is streamed through a workflow.
 
 \subsection{Analytics Algorithm/Kernel Ogres}
 %TABLE 9
@@ -531,7 +550,7 @@ The final Ogre Table~\ref{Table9} records particular data analysis algorithms th
 \end{tabular}
 \end{table}
 
-In table~\ref{Table10}, we present 5 distinct problem architecture that map into 5 distinct system architectures which seem to cover the Ogres and their facets discussed in previous section. 10.5 is the shared memory architecture needed for some graph algorithms that perform better here and also for some large memory applications. The central architectures are 10.1 to 10.4 which correspond exactly to the four forms of MapReduce that we have presented previously ~\cite{b18} but are summarized in figure 2. Note this only describes some core features of the facets in tables~\ref{Table6} and ~\ref{Table7}. There are many other issues that need to be addressed including support of workflow and the data systems captured in the facets of table~\ref{Table8}.
+In table~\ref{Table10}, we present 5 distinct problem architecture that map into 5 distinct system architectures which seem to cover the Ogres and their facets discussed in previous section. 10.5 is the shared memory architecture needed for some graph algorithms that perform better here and also for some large memory applications. The central architectures are 10.1 to 10.4 which correspond exactly to the four forms of MapReduce that we have presented previously~\cite{b18} but are summarized in figure 2. Note this only describes some core features of the facets in tables~\ref{Table6} and~\ref{Table7}. There are many other issues that need to be addressed including support of workflow and the data systems captured in the facets of table~\ref{Table8}.
 
 %Figure 2: The Four forms of MapReduce that correspond to the four architectures of Table 10.1-10.4
 \begin{figure}
@@ -574,7 +593,7 @@ by internet site links. Other Big Data sparse data structures are seen in
 user-item ratings and bags of words problem. Most items are rated by few users
 and many documents contain a small fraction of the word vocabulary. However
 important data analytics involve full matrix algorithms and for example recent
-papers ~\cite{b31,b32} on a new Multi-Dimensional Scaling method use conjugate
+papers~\cite{b31,b32} on a new Multi-Dimensional Scaling method use conjugate
 gradient solvers with full matrices as opposed to the new sparse conjugate
 gradient benchmark HPCG being developed for supercomputer (Top500) evaluations
 ~\cite{b17}. Note that there are similarities between some Big Data graph
@@ -666,7 +685,7 @@ investigate both quantitative and qualitative differences in future work.
 \end{table}
 
 
-We have described elsewhere ~\cite{b30,b14,b27} how we propose to implement Big Data applications exploiting the HPBDS architecture sketched in Table~\ref{Table11} ~\cite{b2}. This combines the best practice commercial Big Data software with an emphasis on Apache projects with HPC subsystems. Table~\ref{Table11} illustrates by green shading those layers where HPC adds significant value to the Apache stack ABDS. Note that high performance communication is known to be critical for simulations but it is also essential for many science big data applications. Commercial applications have large ``search'' (10.2) components corresponding to the huge number of users accessing commercial Big Data systems. In science, this step is necessary - especially for good data management - but is a much lower fraction of system use as the number of scientists accessing data is much lower than number of users of commercial Big Data.
+We have described elsewhere~\cite{b30,b14,b27} how we propose to implement Big Data applications exploiting the HPBDS architecture sketched in Table~\ref{Table11}~\cite{b2}. This combines the best practice commercial Big Data software with an emphasis on Apache projects with HPC subsystems. Table~\ref{Table11} illustrates by green shading those layers where HPC adds significant value to the Apache stack ABDS. Note that high performance communication is known to be critical for simulations but it is also essential for many science big data applications. Commercial applications have large ``search'' (10.2) components corresponding to the huge number of users accessing commercial Big Data systems. In science, this step is necessary - especially for good data management - but is a much lower fraction of system use as the number of scientists accessing data is much lower than number of users of commercial Big Data.
 
 \section{Discussion and Conclusion}
 
