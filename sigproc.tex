@@ -134,9 +134,9 @@ applications with classical HPC simulation applications. Pulling together these
 observations, we identify five key system architectures and note different
 emphases of commercial and research use cases. However we point out that
 combining ideas from HPC and commercial Big Data systems leads to an attractive
-powerful Big Data software model. Section 2 describes the sources of
+powerful Big Data software model. Section~2 describes the sources of
 information for our study and their properties. It also describes lessons from
-related studies of parallel computing. Section 3 describes the features of Big
+related studies of parallel computing. Section~3 describes the features of Big
 Data use cases and the 3 facets into which we group them. We describe some
 generic kernels (mini-applications), termed Ogres, in the data analytics area.
 In section 4, we present implications for needed hardware and software while
@@ -144,7 +144,8 @@ conclusions are in section 5.
 
 
 \section{Sources of Information}
-\subsection{Data Intensive Use Cases}
+
+%\subsection{Data Intensive Use Cases}
 In discussing the structure of Big Data applications, let us first discuss the inevitably incomplete input that we used to do our analysis. We have gained of course quite a bit of experience from our research over many years, but 3 explicit sources that we used were a recent use case survey by NIST from Fall 2013~\cite{bb}; a survey of data intensive research applications by Jha et al.~\cite{b28,b26}; and study of members of data analytics libraries including R~\cite{b4}, Mahout~\cite{b1} and MLLib~\cite{b3}. We follow with a summary of first two sources.
 The NIST Big Data Public Working Group (NBD-PWG) was launched in June 2013 with a set of working groups covering Big Data Definitions, Taxonomies, Requirements, Security and Privacy Requirements, Reference Architectures White Paper Survey, Reference Architectures, Security and Privacy Reference Architectures and Big Data Technology Roadmap. The Requirements working group gathered 51 use cases from a public call and then analyzed in terms of requirements of a reference architecture~\cite{b21}. Here we will look at them differently to identify common patterns and characteristics, which can be used to guide and evaluate Big Data hardware and software. The 51 use cases are organized into nine broad areas with the number of associated use cases in parentheses: Government Operation (4), Commercial (8), Defense (3), Healthcare and Life Sciences (10), Deep Learning and Social Media (6), The Ecosystem for Research (4), Astronomy and Physics (5); Earth, Environmental and Polar Science (10) and Energy (1). 
 Note that the majority of use cases come from research applications but commercial, defense and government operations have some coverage. A template was prepared by the requirements working group, which allowed experts to categorize each use case by 26 features that included those below.
@@ -220,7 +221,7 @@ in several characterization directions. We anticipate that there will be a
 correlation between the specific facet values and Ogre type/characterization.
 
 
-\subsection{Properties of the 51 NIST use cases}
+\subsection{Properties of the 51 NIST Use Cases}
 
 \begin{table}[t]
 \centering
@@ -233,7 +234,7 @@ People & Users (but see below) or Subjects of application and often both\\ \hlin
 Decision makers & Researchers or doctors (users of application)\\ \hline
 %\multirow {Items}  & Experimental observations\\ & Contents of online store\\ & Images or Electronic Information nuggets \\ & EMR: Electronic Medical Records (often similar to people parallelism)\\ & Protein or Gene Sequences\\ & Material properties, Manufactured Object specifications, etc., in custom dataset \\ \hline 
 Items  & Experimental observations\newline Contents of online store\newline  Images or Electronic Information nuggets \newline EMR: Electronic Medical Records (often similar to people parallelism)\newline Protein or Gene Sequences\newline Material properties, Manufactured Object specifications, etc., in custom dataset \\ \hline 
-Modelled entities & Vehicles and people \\ \hline
+Modeled entities & Vehicles and people \\ \hline
 Sensors & Internet of Things \\ \hline
 Events & Detected anomalies in telescope, credit card or atmospheric data \\ \hline
 Graph Nodes & RDF databases \\ \hline
@@ -296,7 +297,7 @@ The difference between LML and GML is illustrated in Table~\ref{Table3}, which c
 
 
 
-\subsection{Properties of distributed use cases}
+\subsection{Properties of Distributed Use Cases}
 %TABLE 4
 \begin{table*}
 \centering
@@ -457,6 +458,7 @@ algorithms to reduce O(N2) to O(N and logs). This is commonly used in search
 and sort algorithms but not yet in computation in spite of promising initial
 work~\cite{b13,b23,b19}.
 
+
 \subsection{Data Source and Data Style Facet of Ogres}
 
 The facet of Table~\ref{Table8} covers the acquisition, storage, management and
@@ -465,8 +467,14 @@ important principle especially for the Internet of Things when it is often not
 practical as backend (clouds) needed to provide adequate computing. It is
 interesting that the HPC approach of large shared file systems using
 technologies like Lustre is rather different from commercial systems that use
-databases or HDFS. Figure 1 stresses that an important source of data is the
-output of other programs as data is streamed through a workflow.
+databases or increasingly HDFS. Figure 1 stresses that an important source of
+data is the output of other programs as data is streamed through a workflow and
+requires in-motion analytics, e.\,g.\ the update of an analytical model, and
+the delivery of a realtime response. The lambda
+architecture~\cite{marz2013principles} integrates stream processing and batch
+processing backend in a unified framework: while the batch layer (e.\,g.\ based
+on HDFS) handles processing requirement on the entire data set, the speed layer
+provides the ability to analyze in-coming data in-motion.
 
 %TABLE 8
 \begin{table}[H]
@@ -566,7 +574,7 @@ Linear/Quadratic Programming, Combinatorial Optimization, Branch and Bound (G5)
 \end{tabular}
 \end{table}
 
-In Table~\ref{Table10}, we present 5 distinct problem architecture
+In Table~\ref{Table10}, we present 5 distinct problem architectures
 that map into 5 distinct system architectures which seem to cover the
 Ogres and their facets discussed in previous section. 10.5 is the
 shared memory architecture needed for some graph algorithms that
@@ -579,6 +587,7 @@ are many other issues that need to be addressed including support of
 workflow and the data systems captured in the facets of
 Table~\ref{Table8}. In particular the architecture for the rapidly
 evolving field of streaming (distributed) data needs more work.
+
 
 %Figure 2: The Four forms of MapReduce that correspond to the four architectures of Table 10.1-10.4
 \begin{figure}
@@ -713,7 +722,19 @@ investigate both quantitative and qualitative differences in future work.
 \end{table}
 
 
-We have described elsewhere~\cite{b30,b14,b27} how we propose to implement Big Data applications exploiting the HPBDS architecture sketched in Table~\ref{Table11}~\cite{b2}. This combines the best practice commercial Big Data software with an emphasis on Apache projects with HPC subsystems. Table~\ref{Table11} illustrates by green shading those layers where HPC adds significant value to the Apache stack ABDS. Note that high performance communication is known to be critical for simulations but it is also essential for many science big data applications. Commercial applications have large ``search'' (10.2) components corresponding to the huge number of users accessing commercial Big Data systems. In science, this step is necessary - especially for good data management - but is a much lower fraction of system use as the number of scientists accessing data is much lower than number of users of commercial Big Data.
+We have described elsewhere~\cite{b30,b14,b27} how we propose to implement Big
+Data applications exploiting the HPBDS architecture sketched in
+Table~\ref{Table11}~\cite{b2}. This combines the best practice commercial Big
+Data software with an emphasis on Apache projects with HPC subsystems.
+Table~\ref{Table11} illustrates by green shading those layers where HPC adds
+significant value to the Apache stack ABDS. Note that high performance
+communication is known to be critical for simulations but it is also essential
+for many science big data applications. Commercial applications have large
+``search'' (10.2) components corresponding to the huge number of users
+accessing commercial Big Data systems. In science, this step is necessary -
+especially for good data management - but is a much lower fraction of system
+use as the number of scientists accessing data is much lower than number of
+users of commercial Big Data.
 
 \section{Discussion and Conclusion}
 
