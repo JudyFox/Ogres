@@ -121,9 +121,26 @@ We study many Big Data applications from a variety of research and commercial ar
 
 
 \section{Introduction}
-With the proliferation of data intensive applications, there is a critical and timely need to understand these properties and the relationship between different applications. The aim of our work is to capture the essential and fundamental Big Data properties, and then to understand applications with those properties. 
-There are many different types of Big Data applications, and we cover them broadly including both research and commercial cases. However our focus is on Science and Engineering research data-intensive applications. We compare and contrast some general properties of Big Data applications with classical HPC simulation applications.  Pulling together these observations, we identify five key system architectures and note different emphases of commercial and research use cases. However we point out that combining ideas from HPC and commercial Big Data systems leads to an attractive powerful Big Data software model.
-Section 2 describes the sources of information for our study and their properties. It also describes lessons from related studies of parallel computing. Section 3 describes the features of Big Data use cases and the 3 facets into which we group them. We describe some generic kernels (mini-applications), termed Ogres, in the data analytics area. In section 4, we present implications for needed hardware and software while conclusions are in section 5.
+With the proliferation of data intensive applications, there is a critical and
+timely need to understand these properties and the relationship between
+different applications. The aim of our work is to capture the essential and
+fundamental Big Data application properties, and then to understand
+applications with those properties. There are many different types of Big Data
+applications, and we cover them broadly including both research and commercial
+cases. However our focus is on Science and Engineering research data-intensive
+applications. We compare and contrast some general properties of Big Data
+applications with classical HPC simulation applications. Pulling together these
+observations, we identify five key system architectures and note different
+emphases of commercial and research use cases. However we point out that
+combining ideas from HPC and commercial Big Data systems leads to an attractive
+powerful Big Data software model. Section 2 describes the sources of
+information for our study and their properties. It also describes lessons from
+related studies of parallel computing. Section 3 describes the features of Big
+Data use cases and the 3 facets into which we group them. We describe some
+generic kernels (mini-applications), termed Ogres, in the data analytics area.
+In section 4, we present implications for needed hardware and software while
+conclusions are in section 5.
+
 
 \section{Sources of Information}
 \subsection{Data Intensive Use Cases}
@@ -415,6 +432,7 @@ Is application (graph) constant or dynamic? \\ \hline
 Most applications consist of a set of interconnected entities; is this regular as a set of pixels or is it a complicated irregular graph? \\ \hline
 Is communication BSP or Asynchronous? In latter case shared memory may be attractive;\\ \hline
 Are algorithms Iterative or not?\\ \hline
+Are algorithms governed by dataflow?\\ \hline
 Data Abstraction: key-value, pixel, graph, vector, HDF5 etc.\\ \hline
 Are data points in metric or non-metric spaces (G2)? \\ \hline
 Is algorithm O(N2) or O(N) (up to logs) for N points per iteration (G2)\\ \hline
@@ -580,7 +598,7 @@ are used extensively in gene assembly applications. The above discussion
 focuses on a qualitative comparison of Big Data applications with traditional
 simulation (HPC) applications viz., comparing the structure. As can be seen
 there are similarities as well as points of distinction. It is likely however,
-that that there will be significant differences in the ``computational
+that there will be significant differences in the ``computational
 feature'' facet of the two application classes, viz., the distribution of the
 values of different ratios (e.g., ratio of computing to I/O, ratio of memory to
 I/O etc.) characterizing the computational feature will be different. We will
