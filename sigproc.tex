@@ -574,7 +574,20 @@ Linear/Quadratic Programming, Combinatorial Optimization, Branch and Bound (G5)
 \end{tabular}
 \end{table}
 
-In Table~\ref{Table10}, we present 5 distinct problem architecture that map into 5 distinct system architectures which seem to cover the Ogres and their facets discussed in previous section. 10.5 is the shared memory architecture needed for some graph algorithms that perform better here and also for some large memory applications. The central architectures are 10.1 to 10.4 which correspond exactly to the four forms of MapReduce that we have presented previously~\cite{b18} but are summarized in Figure~2. Note this only describes some core features of the facets in Tables~\ref{Table6} and~\ref{Table7}. There are many other issues that need to be addressed including support of workflow and the data systems captured in the facets of Table~\ref{Table8}.
+In Table~\ref{Table10}, we present 5 distinct problem architectures
+that map into 5 distinct system architectures which seem to cover the
+Ogres and their facets discussed in previous section. 10.5 is the
+shared memory architecture needed for some graph algorithms that
+perform better here and also for some large memory applications. The
+central architectures are 10.1 to 10.4 which correspond exactly to the
+four forms of MapReduce that we have presented previously~\cite{b18}
+but are summarized in figure 2. Note this only describes some core
+features of the facets in Tables~\ref{Table6} and~\ref{Table7}. There
+are many other issues that need to be addressed including support of
+workflow and the data systems captured in the facets of
+Table~\ref{Table8}. In particular the architecture for the rapidly
+evolving field of streaming (distributed) data needs more work.
+
 
 %Figure 2: The Four forms of MapReduce that correspond to the four architectures of Table 10.1-10.4
 \begin{figure}
