@@ -31,7 +31,7 @@
 \usepackage{url}
 \usepackage{paralist}
 \usepackage{statex2}
-
+\usepackage{float}
 \begin{document}
 
 \title{Towards an Understanding of Facets and Exemplars of Big Data Applications}
@@ -390,8 +390,8 @@ G7 & Alignment Problems
 
 Note that a given application can be made up of components with different
 characteristics in Ogre Facet classification. We will reference the 7
-computational giants G1-G7 from the NRC report~\cite{b13} recorded
-in~\ref{Table5}. These are important big data patterns but the Ogres go into
+computational giants G1-G7 from the NRC report~\cite{b13} recorded in
+Table~\ref{Table5}. These are important big data patterns but the Ogres go into
 more detail. The final subsection discusses a selection of kernel Ogres
 focusing on analytics. We intend to follow up with other Ogres ``mini-apps'' or
 ``kernels'' covering areas like data intensive workflows.
@@ -422,11 +422,11 @@ Agents & As used in epidemiology, discrete event simulations etc. Swarm approach
 
 \subsection{Computational features Facet of Ogres}
 %TABLE 7
-\begin{table*}
+\begin{table}[H]
 \centering
 \caption{ Computational Features Facet of Ogres}
 \label{Table7}
-\begin{tabular}{|p{10cm}|} \hline
+\begin{tabular}{|p{8cm}|} \hline
 Flops per byte: important for performance \\ \hline
 Communication Interconnect requirements; \\ \hline
 Is application (graph) constant or dynamic? \\ \hline
@@ -440,7 +440,7 @@ Is algorithm O(N2) or O(N) (up to logs) for N points per iteration (G2)\\ \hline
 Core libraries needed: matrix-matrix/vector algebra, conjugate gradient, reduction, broadcast. (G4)
 \\ \hline
 \end{tabular}
-\end{table*}
+\end{table}
 
 
 This facet contains application characteristics that are familiar from the
@@ -458,26 +458,6 @@ and sort algorithms but not yet in computation in spite of promising initial
 work~\cite{b13,b23,b19}.
 
 \subsection{Data Source and Data Style Facet of Ogres}
-%TABLE 8
-\begin{table*}
-\centering
-\caption{ Data Source and Style Facet of Ogres}
-\label{Table8}
-\begin{tabular}{|p{12cm}|} \hline
-SQL or NoSQL: NoSQL includes Document, Column, Key-value, Graph, Triple store \\ \hline
-Other Enterprise data systems: 10 examples from NIST~\cite{bb} integrate SQL/NoSQL \\ \hline
-Set of Files: as managed in iRODS and extremely common in scientific research \\ \hline
-File, Object, Block and Data-parallel (HDFS) raw storage: Separated from computing? \\ \hline
-Internet of Things: 24~\cite{b22}to 50 (Cisco~\cite{b11,b12}) billion devices on the Internet by 2020 \\ \hline
-Streaming: Incremental update and analysis of datasets with new algorithms to achieve real-time response (G7) \\ \hline
-HPC simulations generate major (visualization) output that often needs to mined \\ \hline
-GIS (Geographical Information Systems) provide attractive access to geospatial data \\ \hline
-Before data gets to compute system, there is often an initial data gathering phase which is characterized by a block size and timing. Block size varies from month (Remote Sensing, Seismic) today (genomic) to seconds or lower (Real time control, streaming)\\ \hline
-There are storage/compute system styles: Shared, Dedicated, Permanent, Transient \\ \hline
-Other characteristics are needed for permanent auxiliary/comparison datasets and these could be interdisciplinary, implying nontrivial data movement/replication
-\\ \hline
-\end{tabular}
-\end{table*}
 
 The facet of Table~\ref{Table8} covers the acquisition, storage, management and
 access to the data. The mantra of bringing computing to the data is an
@@ -488,13 +468,49 @@ technologies like Lustre is rather different from commercial systems that use
 databases or HDFS. Figure 1 stresses that an important source of data is the
 output of other programs as data is streamed through a workflow.
 
+%TABLE 8
+\begin{table}[H]
+\centering
+\caption{Data Source and Style Facet of Ogres}
+\label{Table8}
+\begin{tabular}{|p{8cm}|} \hline
+SQL or NoSQL: NoSQL includes Document, Column, Key-value, Graph, Triple store \\ \hline
+Other Enterprise data systems: 10 examples from NIST~\cite{bb} integrate SQL/NoSQL \\ \hline
+Set of Files: as managed in iRODS and extremely common in scientific research \\ \hline
+File, Object, Block and Data-parallel (HDFS) raw storage: Separated from computing? \\ \hline
+Internet of Things: 24 to 50 billion devices on the Internet by 2020~\cite{b22,b11,b12} \\ \hline
+Streaming: Incremental update and analysis of datasets with new algorithms to achieve real-time response (G7) \\ \hline
+HPC simulations generate major (visualization) output that often needs to mined \\ \hline
+GIS (Geographical Information Systems) provide attractive access to geospatial data \\ \hline
+Before data gets to compute system, there is often an initial data gathering phase which is characterized by a block size and timing. Block size varies from month (Remote Sensing, Seismic) today (genomic) to seconds or lower (Real time control, streaming)\\ \hline
+There are storage/compute system styles: Shared, Dedicated, Permanent, Transient \\ \hline
+Other characteristics are needed for permanent auxiliary/comparison datasets and these could be interdisciplinary, implying nontrivial data movement/replication
+\\ \hline
+\end{tabular}
+\end{table}
+
+
+
 \subsection{Analytics Algorithm/Kernel Ogres}
+
+The final Ogre Table~\ref{Table9} records particular data analysis algorithms
+that play the same role as say the members of the NAS parallel benchmarks.
+These are deliberately kernels and further work is needed to specify more
+precisely. For example, there are many very different outlier and clustering
+algorithms corresponding to different scenarios (such as metric or non-metric
+spaces) and goals (such as tradeoff between performance and quality). We are
+developing with colleagues, benchmarks in the areas identified in
+Table~\ref{Table9}. One should also introduce Ogres corresponding to full
+applications and workflows. These are important but not discussed here. We
+believe that the set of facets that will be needed to understand these other
+mini-apps will be common across Ogres.
+
 %TABLE 9
-\begin{table*}
+\begin{table}[H]
 \centering
 \caption{Analytics Ogres (microPatterns)}
 \label{Table9}
-\begin{tabular}{|p{12cm}|} \hline
+\begin{tabular}{|p{8cm}|} \hline
 
 \textbf{Pleasingly Parallel (Map Only) or Local Machine Learning: ~any algorithm} \\ \hline 
 \textbf{Map-Reduce} \\ \hline
@@ -526,10 +542,10 @@ Graph Structure (Betweenness centrality, shortest path) (G3)\\ \hline
 Linear/Quadratic Programming, Combinatorial Optimization, Branch and Bound (G5)
 \\ \hline
 \end{tabular}
-\end{table*}
+\end{table}
 
 
-The final Ogre Table~\ref{Table9} records particular data analysis algorithms that play the same role as say the members of the NAS parallel benchmarks. These are deliberately kernels and further work is needed to specify more precisely. For example, there are many very different outlier and clustering algorithms corresponding to different scenarios (such as metric or non-metric spaces) and goals (such as tradeoff between performance and quality). We are developing with colleagues, benchmarks in the areas identified in Table~\ref{Table9}. One should also introduce Ogres corresponding to full applications and workflows. These are important but not discussed here. We believe that the set of facets that will be needed to understand these other mini-apps will be common across Ogres. 
+
 
 \section{Hardware and Software Architecture Issues}
 \subsection{Five Important Architectures}
@@ -539,18 +555,18 @@ The final Ogre Table~\ref{Table9} records particular data analysis algorithms th
 \centering
 \caption{Distinctive Software/Hardware Architectures for Data Analytics}
 \label{Table10}
-\begin{tabular}{|c|p{2cm}|p{5.75cm}|} \hline
-1 & Pleasingly Parallel (Map Only) & Includes local machine learning (LML) as in parallel decomposition over items and apply data processing to each item. Hadoop could be used but also other High Throughput Computing or Many task tools \\ \hline
-2 & Classic MapReduce & Includes MRStat, search applications and those using collaborative filtering and motif finding implemented using classic MapReduce (Hadoop)\\ \hline
-3 & Iterative Map-Collective & Iterative MapReduce using Collective Communication as needed in clustering - Hadoop with Harp, Spark etc. \\ \hline
-4 & Iterative Map-Communication & Iterative MapReduce such as Giraph with point-to-point communication and includes most graph algorithms such as maximum clique,  connected component, finding diameter, community detection). Vary in difficulty of finding partitioning (classic parallel load balancing)\\ \hline
-5 & Shared (Large) Memory & Thread-based (event driven) graph algorithms such as shortest path and Betweenness centrality. Large memory applications
+\begin{tabular}{|p{2.55cm}|p{5.45cm}|} \hline
+1. Pleasingly Parallel (Map Only) & Includes local machine learning (LML) as in parallel decomposition over items and apply data processing to each item. Hadoop could be used but also other High Throughput Computing or Many task tools \\ \hline
+2. Classic Map\-Reduce & Includes MRStat, search applications and those using collaborative filtering and motif finding implemented using classic MapReduce (Hadoop)\\ \hline
+3. Iterative Map-Collective & Iterative MapReduce using Collective Communication as needed in clustering - Hadoop with Harp, Spark etc. \\ \hline
+4. Iterative Map\-Communi\-cation & Iterative MapReduce such as Giraph with point-to-point communication and includes most graph algorithms such as maximum clique,  connected component, finding diameter, community detection). Vary in difficulty of finding partitioning (classic parallel load balancing)\\ \hline
+5. Shared (Lar\-ge) Memory & Thread-based (event driven) graph algorithms such as shortest path and Betweenness centrality. Large memory applications
  
 \\ \hline
 \end{tabular}
 \end{table}
 
-In table~\ref{Table10}, we present 5 distinct problem architecture that map into 5 distinct system architectures which seem to cover the Ogres and their facets discussed in previous section. 10.5 is the shared memory architecture needed for some graph algorithms that perform better here and also for some large memory applications. The central architectures are 10.1 to 10.4 which correspond exactly to the four forms of MapReduce that we have presented previously~\cite{b18} but are summarized in figure 2. Note this only describes some core features of the facets in tables~\ref{Table6} and~\ref{Table7}. There are many other issues that need to be addressed including support of workflow and the data systems captured in the facets of table~\ref{Table8}.
+In Table~\ref{Table10}, we present 5 distinct problem architecture that map into 5 distinct system architectures which seem to cover the Ogres and their facets discussed in previous section. 10.5 is the shared memory architecture needed for some graph algorithms that perform better here and also for some large memory applications. The central architectures are 10.1 to 10.4 which correspond exactly to the four forms of MapReduce that we have presented previously~\cite{b18} but are summarized in figure 2. Note this only describes some core features of the facets in Tables~\ref{Table6} and~\ref{Table7}. There are many other issues that need to be addressed including support of workflow and the data systems captured in the facets of Table~\ref{Table8}.
 
 %Figure 2: The Four forms of MapReduce that correspond to the four architectures of Table 10.1-10.4
 \begin{figure}
@@ -573,7 +589,7 @@ plug-in to Hadoop which supports both models.
 
 We can use the Ogre facet analysis and the data analytics architectures to
 compare data intensive and simulation applications. There are some clear
-similarities with looking back at table~\ref{Table6}, ``Pleasingly parallel''
+similarities with looking back at Table~\ref{Table6}, ``Pleasingly parallel''
 (10.1), BSP and SPMD common in both arenas. However, the Classic MapReduce
 architecture (10.2) is a major big data paradigm, but has much less common in
 simulations with one example between the execution of multiple simulations (as
@@ -645,7 +661,7 @@ investigate both quantitative and qualitative differences in future work.
 % \end{figure}
 
 
-\begin{table}[t]
+\begin{table}[H]
 \caption{Big Data Software Environment: ABDS\label{Table11}}
 \begin{tabular}{|p{2cm}|p{6cm}|}
 \hline
